@@ -14,7 +14,7 @@ class Produk extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nama_produk','kategori','keterangan'];
+	protected $allowedFields        = ['nama_produk','kategori_id','keterangan'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -24,7 +24,10 @@ class Produk extends Model
 	protected $deletedField         = 'deleted_at';
 
 	// Validation
-	protected $validationRules      = [];
+	protected $validationRules      = [
+		'nama_produk' => 'required',
+		'kategori_id' => 'required'
+	];
 	protected $validationMessages   = [];
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
@@ -36,7 +39,16 @@ class Produk extends Model
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
-	protected $afterFind            = [];
+	protected $afterFind            = ['kategoriById'];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	protected function kategoriById(array $data){
+		$ketegoriModel = model('App\Models\Kategori', false);
+		foreach( $data['data'] as $key => $value ){
+			$data['data'][$key]['kategori'] = $ketegoriModel->find($value['kategori_id']);
+		}
+		return $data;
+	}
+
 }

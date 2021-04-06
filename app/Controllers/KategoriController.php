@@ -17,8 +17,36 @@ class KategoriController extends BaseController
 	}
 
 	public function getdata(){
+		$this->response->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Headers', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+			
 		$kategori = new \App\Models\Kategori();
-		echo json_encode($kategori);
+		
+		$kategoriList = $kategori->paginate(10, 'group1', null,10 );
+
+		echo json_encode([
+			"data"=>$kategoriList
+		]);
+	}
+
+	public function show($id){
+		$kategori = new \App\Models\Kategori();
+		$output = $kategori->find($id);
+		echo json_encode($output);
+	}
+
+	public function update($id){
+		$kategori = new \App\Models\Kategori();
+		$input=$this->request->getPost();
+		$kategori->update($id,$input);
+		echo json_encode(["message"=>"data berhasil di rubah"]);
+	}
+
+	public function destroy($id){
+		$kategori = new \App\Models\Kategori();
+		$kategori->delete($id);
+		echo json_encode(["message"=>"data berhasil di hapus"]);
 	}
 
 	public function store(){
@@ -26,11 +54,6 @@ class KategoriController extends BaseController
 		$input = $this->request->getPost();
 
 		$kategori->insert($input);
-
-		if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-			strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
-				echo json_encode(["pesan"=>"data berhasil disimpan"]);
-		}else
-			return redirect()->to('/kategori');
+		echo json_encode(["pesan"=>"data berhasil disimpan"]);
 	}
 }
