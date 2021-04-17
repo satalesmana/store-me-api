@@ -9,7 +9,7 @@ class Createproduk extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'produk_id' => [
+			'id' => [
 				'type'           => 'INT',
 				'constraint'     => 5,
 				'unsigned'       => true,
@@ -19,9 +19,9 @@ class Createproduk extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
 			],
-			'kategori' => [
-				'type' => 'VARCHAR',
-				'constraint' => "100",
+			'kategori_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
 			],
 			'keterangan' => [
 				'type' => 'TEXT',

@@ -8,7 +8,7 @@ class Produk extends Model
 {
 	protected $DBGroup              = 'default';
 	protected $table                = 'produk';
-	protected $primaryKey           = 'produk_id';
+	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
