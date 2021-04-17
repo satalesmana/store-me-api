@@ -20,16 +20,18 @@ class ProdukController extends BaseController
 	}
 
 	public function getdata(){
-		header('Access-Control-Allow-Origin: *');
-		header('Content-type: application/json');
+		$this->response->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Headers', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+			
 		$data = $this->produk->findAll();
-		return json_encode($data);
+		return $this->response->setJSON($data);
 	}
 
 	public function store(){
 
 		$input = $this->request->getPost();
-		$this->produk->save($input);
+
 		if ($this->produk->save($input) === false)
 		{
 			return  $this->response->setStatusCode(422)
@@ -39,18 +41,22 @@ class ProdukController extends BaseController
 	}
 
 	public function show($id){
-		echo json_encode($this->produk->find($id));
+		$this->response->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Headers', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+			
+		return $this->response->setJSON($this->produk->find($id));
 	}
 
 	public function update($id){
 		$input = $this->request->getPost();
 		$this->produk->update($id,$input);
-		echo json_encode(["message"=>"data berhasil di update"]);
+		return $this->response->setJSON(["message"=>"data berhasil di update"]);
 	}
 
 	public function destroy($id){
 		$this->produk->delete($id);
-		echo json_encode(["message"=>"data berhasil di hapus"]);
+		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}
 
 }

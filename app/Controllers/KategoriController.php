@@ -25,7 +25,7 @@ class KategoriController extends BaseController
 		
 		$kategoriList = $kategori->paginate(10, 'group1', null,10 );
 
-		echo json_encode([
+		return $this->response->setJSON([
 			"data"=>$kategoriList
 		]);
 	}
@@ -33,20 +33,20 @@ class KategoriController extends BaseController
 	public function show($id){
 		$kategori = new \App\Models\Kategori();
 		$output = $kategori->find($id);
-		echo json_encode($output);
+		return $this->response->setJSON($output);
 	}
 
 	public function update($id){
 		$kategori = new \App\Models\Kategori();
 		$input=$this->request->getPost();
 		$kategori->update($id,$input);
-		echo json_encode(["message"=>"data berhasil di rubah"]);
+		return $this->response->setJSON(["message"=>"data berhasil di rubah"]);
 	}
 
 	public function destroy($id){
 		$kategori = new \App\Models\Kategori();
 		$kategori->delete($id);
-		echo json_encode(["message"=>"data berhasil di hapus"]);
+		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}
 
 	public function store(){
@@ -54,6 +54,6 @@ class KategoriController extends BaseController
 		$input = $this->request->getPost();
 
 		$kategori->insert($input);
-		echo json_encode(["pesan"=>"data berhasil disimpan"]);
+		return $this->response->setJSON(["pesan"=>"data berhasil disimpan"]);
 	}
 }
