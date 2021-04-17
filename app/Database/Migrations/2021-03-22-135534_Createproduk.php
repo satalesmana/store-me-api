@@ -28,7 +28,7 @@ class Createproduk extends Migration
 				'null' => true,
 			],
 		]);
-		$this->forge->addKey('produk_id', true);
+		$this->forge->addKey('id', true);
 		$this->forge->createTable('produk');
 	}
 
