@@ -48,6 +48,11 @@ $routes->post('api/produk/add', 'ProdukController::store');
 $routes->add('api/produk/(:segment)/edit', 'ProdukController::show/$1');
 $routes->post('api/produk/(:segment)/update', 'ProdukController::update/$1');
 $routes->get('api/produk/(:segment)/delete', 'ProdukController::destroy/$1');
+
+$routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
+{
+    $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

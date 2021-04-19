@@ -20,13 +20,18 @@ class KategoriController extends BaseController
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-			
+
+		$pages = ($this->request->getGet('pages') != '' ) ? $this->request->getGet('pages') : 1;
+
 		$kategori = new \App\Models\Kategori();
-		
-		$kategoriList = $kategori->paginate(10, 'group1', null,10 );
 
 		return $this->response->setJSON([
-			"data"=>$kategoriList
+			"data"=> $kategori->paginate(2,'group1',$pages),
+			"pager"=>[
+				"total"=> count($kategori->findAll()),
+				"perpage"=> 2,
+				"pages"	=> (int) $pages
+			]
 		]);
 	}
 
@@ -52,6 +57,10 @@ class KategoriController extends BaseController
 	public function store(){
 		$kategori = new \App\Models\Kategori();
 		$input = $this->request->getPost();
+
+		$path = $this->request->getFile('images')->store();
+		
+		$input['images'] = $path;
 
 		$kategori->insert($input);
 		return $this->response->setJSON(["pesan"=>"data berhasil disimpan"]);

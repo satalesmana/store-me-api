@@ -23,8 +23,15 @@ class ProdukController extends BaseController
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-			
-		$data = $this->produk->findAll();
+		$filter = $this->request->getGet('keyword');
+		$data = [];
+
+		if($filter){
+			var_dump("tes");
+			$data = $this->produk->findAll();
+		}else
+			$data = $this->produk->findAll();
+
 		return $this->response->setJSON($data);
 	}
 
