@@ -19,19 +19,38 @@ class KategoriController extends BaseController
 	public function getdata(){
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
-            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+            ->setHeader('Access-Control-Allow-Methods', 'GET');
 
-		$pages = ($this->request->getGet('pages') != '' ) ? $this->request->getGet('pages') : 1;
+		$kategori 		= new \App\Models\Kategori();
+		$order 			= $this->request->getGet('order');
+		$column 		= $this->request->getGet('columns');
+		$column_order 	= $column[$order[0]['column']]['data'];
+		$keyword 		= $this->request->getGet('search');
+		$totalPerpage 	= $this->request->getGet('length');
+		$start 			= $this->request->getGet('start');
+		
+		$pages = 1;
+		if($start > 0){
+			$pages = floor($start / $totalPerpage) + 1;
+		}
+		
+		
+		$total_data = count($kategori->findAll());
+		if($keyword['value'] !=''){
+			$total_data = count($kategori->orderBy($column_order, $order[0]['dir'])
+				->like("nama_kategori","%".$keyword['value']."%")
+				->findAll());
+		}
 
-		$kategori = new \App\Models\Kategori();
+		$data = $kategori->orderBy($column_order, $order[0]['dir'])
+			->like("nama_kategori","%".$keyword['value']."%")
+			->paginate($totalPerpage, "group", $pages);
 
 		return $this->response->setJSON([
-			"data"=> $kategori->paginate(2,'group1',$pages),
-			"pager"=>[
-				"total"=> count($kategori->findAll()),
-				"perpage"=> 2,
-				"pages"	=> (int) $pages
-			]
+			"data"=> $data,
+			"draw"=> $this->request->getGet('draw'),
+			"recordsTotal"=> $total_data,
+			"recordsFiltered"=> $total_data
 		]);
 	}
 
@@ -58,9 +77,14 @@ class KategoriController extends BaseController
 		$kategori = new \App\Models\Kategori();
 		$input = $this->request->getPost();
 
-		$path = $this->request->getFile('images')->store();
+		try{
+			$gambar = $this->request->getFile('images');
+			$file_name = $gambar->getRandomName();
+			$file_path = 'uploads';
+			$gambar->move("./".$file_path,$file_name);
+			$input['images'] = base_url()."/".$file_path."/".$file_name;
+		}catch(\Exception $e){}
 		
-		$input['images'] = $path;
 
 		$kategori->insert($input);
 		return $this->response->setJSON(["pesan"=>"data berhasil disimpan"]);

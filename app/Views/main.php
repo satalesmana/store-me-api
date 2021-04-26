@@ -11,7 +11,9 @@
         <link href="<?php echo base_url('/lib'); ?>/datatable/datatables.css" rel="stylesheet"/>
         <link href="<?php echo base_url('/lib'); ?>/font-awesome-4/css/font-awesome.min.css" rel="stylesheet"/>
         <link href="<?php echo base_url('/lib'); ?>/bootstrap-4/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="<?php echo base_url('/lib'); ?>/swal/dist/sweetalert2.min.css">
         
+        <script src="<?php echo base_url('/lib'); ?>/swal/dist/sweetalert2.min.js"></script>
         <script src="<?php echo base_url('/lib/jquery-ui/external/jquery'); ?>/jquery.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/lib/bootstrap-4'); ?>/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/templates/sbadmin'); ?>/js/scripts.js" type="text/javascript"></script>
