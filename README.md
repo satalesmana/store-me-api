@@ -1,4 +1,4 @@
-# CodeIgniter 4 Application Starter
+# App StoreMe
 
 ## Clone Repo
   `git clone https://github.com/satalesmana/store-me-api.git`
