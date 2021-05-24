@@ -27,7 +27,6 @@ class ProdukController extends BaseController
 		$data = [];
 
 		if($filter){
-			var_dump("tes");
 			$data = $this->produk->findAll();
 		}else
 			$data = $this->produk->findAll();

@@ -66,10 +66,38 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <?php echo anchor("/kategori","Kategori",["class"=>"nav-link"]); ?>
                                     <?php echo anchor("/produk","Produk",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/customer","Pelanggan",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
-                            
-                            
+
+                            <!-- Star Menu Transaksi-->
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsTransaksi" aria-expanded="false" aria-controls="collapseLayoutsTransaksi">
+                                <div class="sb-nav-link-icon"><i class="fa fa-columns"></i></div>
+                                    Transaksi
+                                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutsTransaksi" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <?php echo anchor("/pesanan","Pesanan",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/pembayaran","Pembayaran",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/pengiriman","Pengiriman",["class"=>"nav-link"]); ?>
+                                </nav>
+                            </div>
+                            <!-- End Menu Transaksi-->
+
+                            <!-- Star Menu Config-->
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsConfig" aria-expanded="false" aria-controls="collapseLayoutsConfig">
+                                <div class="sb-nav-link-icon"><i class="fa fa-columns"></i></div>
+                                    Config
+                                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutsConfig" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <?php echo anchor("/user","User Account",["class"=>"nav-link"]); ?>
+                                </nav>
+                            </div>
+                            <!-- End Menu Config-->
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
