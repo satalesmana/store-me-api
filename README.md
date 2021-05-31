@@ -21,3 +21,4 @@ Branch
   - kumbangbadak
   - doraemon
   - shinchan
+  - minions
