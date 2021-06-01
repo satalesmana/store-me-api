@@ -18,8 +18,8 @@ class App extends BaseController
 		return view("app", ['page' => 'account']);
 	}
 
-	public function produk($produkid = FALSE){
-		return view("app", ['page' => 'produk', 'produkid' => $produkid]);
+	public function product($productid = FALSE){
+		return view("app", ['page' => 'product', 'productid' => $productid]);
 	}
 
 	public function notfound(){

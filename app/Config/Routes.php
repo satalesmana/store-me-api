@@ -38,8 +38,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/app', 'App::index');
 $routes->get('/app/register', 'App::register');
 $routes->get('/app/account', 'App::account');
-$routes->get('/app/produk', 'App::produk');
-$routes->get('/app/produk/(:segment)', 'App::produk/$1');
+$routes->get('/app/category/(:segment)', 'App::category/$1');
+$routes->get('/app/product/(:segment)', 'App::product/$1');
 $routes->get('/app/(:segment)', 'App::notfound');
 
 $routes->get('/profile', 'Profile::index');
