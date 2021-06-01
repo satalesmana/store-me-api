@@ -9,7 +9,8 @@
     <title>Store Me</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded m-2 border">
+    <div class="container-fluid sticky-top px-2 pt-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded border">
         <div class="container-fluid">
             <a class="navbar-brand" href="/app">Store Me</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-navbar-menu" aria-controls="mobile-navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +52,7 @@
             </div>
         </div>
     </nav>
+    </div>
     <div id="recommended-product-controls" class="carousel slide shadow-sm rounded mx-2 mt-2 border" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#recommended-products-indicator" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
