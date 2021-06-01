@@ -32,11 +32,11 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex px-2">
                     <input class="form-control me-2" type="search" placeholder="Cari produk disini..." aria-label="Cari produk disini...">
                     <button class="btn btn-outline-primary" type="submit">Cari!</button>
                 </form>
-                <ul class="navbar-nav ms-3">
+                <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anonymous</a>
                         <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="user-dropdown">
