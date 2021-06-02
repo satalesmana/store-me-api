@@ -25,6 +25,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="product-category-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
                         <ul class="dropdown-menu shadow-sm" aria-labelledby="product-category-dropdown">
+                            <li><a class="dropdown-item" href="#">Semua kategori</a></li>
                             <li><a class="dropdown-item" href="#">Kategori 1</a></li>
                             <li><a class="dropdown-item" href="#">Kategori 2</a></li>
                             <li><a class="dropdown-item" href="#">Kategori 3</a></li>
@@ -55,92 +56,96 @@
     </nav>
     </div>
     <!-- End Navigation Bar -->
-    <!-- Recommended Products -->
-    <div id="recommended-product-controls" class="carousel slide shadow-sm rounded mx-2 mt-2 border" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Produk rekomendasi 1</h5>
-                    <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+    <!-- Home Page -->
+    <div class="container-fluid p-0 m-0 page" id="home-page">
+        <!-- Recommended Products -->
+        <div id="recommended-product-controls" class="carousel slide shadow-sm rounded mx-2 mt-2 border" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Produk rekomendasi 1</h5>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Produk rekomendasi 2</h5>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Produk rekomendasi 3</h5>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Produk rekomendasi 2</h5>
-                    <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+            <button class="carousel-control-prev" type="button" data-bs-target="#recommended-product-controls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#recommended-product-controls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- End Recommended Products -->
+        <!-- Products in Home -->
+        <div class="container-fluid p-2">
+            <div class="row p-0 m-0" style="width: 100% !important;">
+                <div class="produk col-md-4 p-2">
+                    <div class="card shadow-sm p-0">
+                        <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk 1</h5>
+                            <p class="card-text">Deskripsi produk 1.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Produk rekomendasi 3</h5>
-                    <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.</p>
+                <div class="produk col-md-4 p-2">
+                    <div class="card shadow-sm p-0">
+                        <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk 2</h5>
+                            <p class="card-text">Deskripsi produk 2.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="produk col-md-4 p-2">
+                    <div class="card shadow-sm p-0">
+                        <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk 3</h5>
+                            <p class="card-text">Deskripsi produk 3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="produk col-md-4 p-2">
+                    <div class="card shadow-sm p-0">
+                        <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk 4</h5>
+                            <p class="card-text">Deskripsi produk 4.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="produk col-md-4 p-2">
+                    <div class="card shadow-sm p-0">
+                        <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk 5</h5>
+                            <p class="card-text">Deskripsi produk 5.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#recommended-product-controls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#recommended-product-controls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <!-- End Products in Home -->
     </div>
-    <!-- End Recommended Products -->
-    <!-- Products in Home -->
-    <div class="container-fluid p-2">
-        <div class="row p-0 m-0" style="width: 100% !important;">
-            <div class="produk col-md-4 p-2">
-                <div class="card shadow-sm p-0">
-                    <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Produk 1</h5>
-                        <p class="card-text">Deskripsi produk 1.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="produk col-md-4 p-2">
-                <div class="card shadow-sm p-0">
-                    <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Produk 2</h5>
-                        <p class="card-text">Deskripsi produk 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="produk col-md-4 p-2">
-                <div class="card shadow-sm p-0">
-                    <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Produk 3</h5>
-                        <p class="card-text">Deskripsi produk 3.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="produk col-md-4 p-2">
-                <div class="card shadow-sm p-0">
-                    <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Produk 4</h5>
-                        <p class="card-text">Deskripsi produk 4.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="produk col-md-4 p-2">
-                <div class="card shadow-sm p-0">
-                    <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Produk 5</h5>
-                        <p class="card-text">Deskripsi produk 5.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Products in Home -->
+    <!-- End Home Page -->
     <!-- Registration -->
     <div class="modal fade" id="registration-modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -165,7 +170,7 @@
                         </div>
                         <div class="m-2">
                             <label class="mb-2">Upload fotomu</label>
-                            <input class="form-control" type="file" id="register-password">
+                            <input class="form-control" type="file" id="register-photo">
                         </div>
                         <div class="form-floating m-2">
                             <textarea type="text" class="form-control" id="register-address" placeholder="Alamat" style="height: 120px"></textarea>
@@ -207,6 +212,21 @@
         </div>
     </div>
     <!-- End Login -->
+    
     <script src="/lib/app/bootstrap.bundle.min.js"></script>
+    <script src="/lib/app/jquery.min.js"></script>
+    <script>
+        const pages = ['home'];
+        const showPage = (page = null) => {
+            pages.forEach(e => {
+                if (e !== page) $(`#${e}-page`).removeClass('active');    
+            });
+            return $(`#${page}-page`).addClass('active');
+        }
+
+        $(document).ready(() => {
+            showPage('<?= $page ?>')
+        });
+    </script>
 </body>
 </html>

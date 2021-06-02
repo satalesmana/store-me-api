@@ -15,3 +15,11 @@
     height: 400px;
     object-fit: cover;
 }
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
