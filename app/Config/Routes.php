@@ -35,12 +35,9 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Home::index');
 
 // Ini routing untuk user.
-$routes->get('/app', 'App::index');
-$routes->get('/app/home', 'App::home');
-$routes->get('/app/account', 'App::account');
-$routes->get('/app/category/(:segment)', 'App::category/$1');
-$routes->get('/app/product/(:segment)', 'App::product/$1');
-$routes->get('/app/(:segment)', 'App::notfound');
+$routes->get('/app', 'App::serve');
+$routes->get('/app/(:segment)', 'App::serve/$1');
+$routes->get('/app/(:segment)/(:segment)', 'App::serve/$1/$2');
 
 $routes->get('/profile', 'Profile::index');
 $routes->get('/kategori', 'KategoriController::index');
