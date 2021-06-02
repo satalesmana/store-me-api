@@ -43,7 +43,7 @@
                         <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="user-dropdown">
                             <div class="d-flex flex-column justify-content-center align-items-center mx-4 my-2">
                                 <img src="http://via.placeholder.com/240" class="cs-user-profile-pic rounded-circle m-2">
-                                <h5 class="text-center">Kamu belum masuk :(</h5>
+                                <h6 class="text-center">Kamu belum masuk :(</h6>
                             </div>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registration-modal">Daftar</a></li>
                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Masuk</a></li>
