@@ -30,7 +30,7 @@
     <script src="/lib/app/bootstrap.bundle.min.js"></script>
     <script src="/lib/app/jquery.min.js"></script>
     <script>
-        const pages = ['home'];
+        const pages = ['home', 'product-detail', 'product-list', 'profile'];
         const showPage = (page = null) => {
             pages.forEach(e => {
                 if (e !== page) $(`#${e}-page`).removeClass('active');    
