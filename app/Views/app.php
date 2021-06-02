@@ -18,9 +18,12 @@
     <!-- Home Page -->
     <?= view('app/home') ?>
     <!-- End Home Page -->
-    <!-- Product Page -->
-    <?= view('app/product') ?>
-    <!-- End Product Page -->
+    <!-- Product List Page -->
+    <?= view('app/productlist') ?>
+    <!-- End Product List Page -->
+    <!-- Product Detail Page -->
+    <?= view('app/productdetail') ?>
+    <!-- End Product Detail Page -->
     <!-- Profile Page -->
     <?= view('app/profile') ?>
     <!-- End Profile Page -->
