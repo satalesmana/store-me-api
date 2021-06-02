@@ -10,10 +10,6 @@ class App extends BaseController
 		return view("app");
 	}
 
-	public function register(){
-		return view("app", ['page' => 'register']);
-	}
-
 	public function account(){
 		return view("app", ['page' => 'account']);
 	}

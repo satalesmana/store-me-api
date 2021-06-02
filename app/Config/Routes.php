@@ -36,7 +36,6 @@ $routes->get('/', 'Home::index');
 
 // Ini routing untuk user.
 $routes->get('/app', 'App::index');
-$routes->get('/app/register', 'App::register');
 $routes->get('/app/account', 'App::account');
 $routes->get('/app/category/(:segment)', 'App::category/$1');
 $routes->get('/app/product/(:segment)', 'App::product/$1');
