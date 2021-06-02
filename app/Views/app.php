@@ -9,6 +9,7 @@
     <title>Store Me</title>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <div class="container-fluid sticky-top px-2 pt-2">
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded border">
         <div class="container-fluid">
@@ -44,8 +45,8 @@
                                 <img src="http://via.placeholder.com/240" class="cs-user-profile-pic rounded-circle m-2">
                                 <h5 class="text-center">Kamu belum masuk :(</h5>
                             </div>
-                            <li><a class="dropdown-item" href="#">Daftar</a></li>
-                            <li><a class="dropdown-item" href="#">Masuk</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registration-modal">Daftar</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Masuk</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -53,12 +54,9 @@
         </div>
     </nav>
     </div>
+    <!-- End Navigation Bar -->
+    <!-- Recommended Products -->
     <div id="recommended-product-controls" class="carousel slide shadow-sm rounded mx-2 mt-2 border" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#recommended-products-indicator" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#recommended-products-indicator" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#recommended-products-indicator" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="http://via.placeholder.com/1280x720" class="cs-recommended-product">
@@ -91,6 +89,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!-- End Recommended Products -->
+    <!-- Products in Home -->
     <div class="container-fluid p-2">
         <div class="row p-0 m-0" style="width: 100% !important;">
             <div class="produk col-md-4 p-2">
@@ -140,6 +140,73 @@
             </div>
         </div>
     </div>
+    <!-- End Products in Home -->
+    <!-- Registration -->
+    <div class="modal fade" id="registration-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Daftar Sekarang!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-floating m-2">
+                            <input type="text" class="form-control" id="register-name" placeholder="Nama">
+                            <label>Nama</label>
+                        </div>
+                        <div class="form-floating m-2">
+                            <input type="email" class="form-control" id="register-email" placeholder="Email">
+                            <label>Email</label>
+                        </div>
+                        <div class="form-floating m-2">
+                            <input type="password" class="form-control" id="register-password" placeholder="Password">
+                            <label>Password</label>
+                        </div>
+                        <div class="m-2">
+                            <label class="mb-2">Upload fotomu</label>
+                            <input class="form-control" type="file" id="register-password">
+                        </div>
+                        <div class="form-floating m-2">
+                            <textarea type="text" class="form-control" id="register-address" placeholder="Alamat" style="height: 120px"></textarea>
+                            <label>Alamat</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Daftar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Registration -->
+    <!-- Login -->
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Masuk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-floating m-2">
+                            <input type="email" class="form-control" id="login-email" placeholder="Email">
+                            <label>Email</label>
+                        </div>
+                        <div class="form-floating m-2">
+                            <input type="password" class="form-control" id="login-password" placeholder="Password">
+                            <label>Password</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Masuk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Login -->
     <script src="/lib/app/bootstrap.bundle.min.js"></script>
 </body>
 </html>
