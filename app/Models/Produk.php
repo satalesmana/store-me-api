@@ -14,7 +14,8 @@ class Produk extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nama_produk','kategori_id','keterangan'];
+	protected $allowedFields        = ['nama_produk','kategori_id','keterangan','harga_beli',
+										'harga_jual','stock','gambar'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -26,7 +27,7 @@ class Produk extends Model
 	// Validation
 	protected $validationRules      = [
 		'nama_produk' => 'required',
-		'kategori_id' => 'required'
+		'kategori_id' => 'required',
 	];
 	protected $validationMessages   = [];
 	protected $skipValidation       = false;
