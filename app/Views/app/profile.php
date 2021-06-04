@@ -1,13 +1,13 @@
 <!-- Profile (Sukma) -->
-
-<div class="container-md text-center" id="profile-page">
+<div class="container-fluid p-0 m-0 page" id="profile-page">
+<div class="container-md text-center">
 	<br/><br/>
 	<img src="https://www.maxpixel.net/static/photo/640/Girl-Woman-Young-Avatar-Muslim-Female-Hijab-1606914.png" width="100">
 	<h5 class="text-center">Rifkah Azzahra Sukma</h5>
 	<p class="lead">@rifkahazzahra9</p>	
 </div>
 
-<div class="container-md" id="profile-page">
+<div class="container-md">
 <div class="accordion shadow-sm rounded" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -44,6 +44,7 @@
       </button>
     </h2>
   </div>
+</div>
 </div>
 </div>
 
