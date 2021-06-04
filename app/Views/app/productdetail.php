@@ -39,12 +39,18 @@
         <br>
                 <div>
                      <input type="number" value="1">
-                        <button type="button" class="btn btn-danger">Add to Cart</button>
                 </div>
+        <br>
+                <div>
+                        <button type="button" class="btn btn-danger">Add to Cart</button>
+                        <button type="button" class="btn btn-outline-danger">Buy Now</button>
+                </div>
+        <br>
                         <h3>Product Details</h3>
-                            <br>
-                                <p>Product made in indonesian by lemnisketsquad</p>
+                          <br>
+                                <p> Product made in indonesian by lemnisketsquad</p>
         </div>
+    </div>
     </div>
 </div>
 <!-- End product detail -->
