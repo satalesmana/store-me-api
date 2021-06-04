@@ -23,7 +23,7 @@ class Createproduk extends Migration
 				'type' => 'INT',
 				'constraint' => 5,
 			],
-			'keterangan' => [
+			'deskripsi' => [
 				'type' => 'TEXT',
 				'null' => true,
 				// deskripsi
@@ -44,8 +44,7 @@ class Createproduk extends Migration
 				'constrait' => 5,
 			],
 			'gambar' => [
-				'type'       => 'VARCHAR',
-				'constraint' => '255',
+				'type' => 'TEXT'
 			],
 
 		]);
