@@ -1,4 +1,5 @@
 <!-- Profile (Sukma) -->
+
 <div class="container-md text-center" id="profile-page">
 	<br/><br/>
 	<img src="https://www.maxpixel.net/static/photo/640/Girl-Woman-Young-Avatar-Muslim-Female-Hijab-1606914.png" width="100">
@@ -10,7 +11,7 @@
 <div class="accordion shadow-sm rounded" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-user-circle me-2"></i>
         Akun Saya
       </button>
     </h2>
@@ -24,22 +25,22 @@
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fas fa-list-alt me-2"></i>
         Pesanan Saya
       </button>
     </h2>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-bell me-2"></i>
         Notifikasi
       </button>
     </h2>
   </div>
  <div class="accordion-item">
     <h2 class="accordion-header" id="headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        Voucher
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i class="fas fa-money-check me-2"></i>
+        Voucher Saya
       </button>
     </h2>
   </div>
