@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\JwtauthenticationFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -19,6 +20,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'auth' 	   => JwtauthenticationFilter::class
 	];
 
 	/**
@@ -36,6 +38,12 @@ class Filters extends BaseConfig
 			'toolbar',
 			// 'honeypot',
 		],
+		'auth' => [
+			'before' => [
+				'client/*',
+				'client'
+		  ],
+		]
 	];
 
 	/**

@@ -49,9 +49,17 @@ $routes->add('api/produk/(:segment)/edit', 'ProdukController::show/$1');
 $routes->post('api/produk/(:segment)/update', 'ProdukController::update/$1');
 $routes->get('api/produk/(:segment)/delete', 'ProdukController::destroy/$1');
 
-$routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
+$routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
 {
     $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+    
+});
+
+$routes->group('auth', ['namespace' => 'App\Controllers'], function($routes)
+{
+    $routes->post('register', 'Auth::register');
+    $routes->post('login', 'Auth::login');
+    $routes->post('me', 'Auth::me');
 });
 /*
  * --------------------------------------------------------------------
