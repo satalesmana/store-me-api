@@ -33,8 +33,13 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/profile', 'Profile::index');
 
+// Ini routing untuk user.
+$routes->get('/app', 'App::serve');
+$routes->get('/app/(:segment)', 'App::serve/$1');
+$routes->get('/app/(:segment)/(:segment)', 'App::serve/$1/$2');
+
+$routes->get('/profile', 'Profile::index');
 $routes->get('/kategori', 'KategoriController::index');
 $routes->get('/api/kategori','KategoriController::getdata');
 $routes->post('api/kategori/add', 'KategoriController::store');
