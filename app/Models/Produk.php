@@ -46,15 +46,17 @@ class Produk extends Model
 
 	protected function kategoriById(array $data){
 		$ketegoriModel = model('App\Models\Kategori', false);
-		if(isset($data['data'][0])){
-			foreach( $data['data'] as $key => $value ){
-				$data['data'][$key]['kategori'] = $ketegoriModel->find($value['kategori_id']);
+		if(count($data['data']) > 0){
+			if(isset($data['data'][0])){
+				foreach( $data['data'] as $key => $value ){
+					$data['data'][$key]['kategori'] = $ketegoriModel->find($value['kategori_id']);
+				}
+			}else{
+				if($data['data']['kategori_id'])
+					$data['data']['kategori'] = $ketegoriModel->find($data['data']['kategori_id']);
 			}
-		}else{
-			if($data['data']['kategori_id'])
-				$data['data']['kategori'] = $ketegoriModel->find($data['data']['kategori_id']);
 		}
-		
+
 		return $data;
 	}
 

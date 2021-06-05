@@ -26,12 +26,38 @@ class ProdukController extends BaseController
 		$filter = $this->request->getGet('keyword');
 		$data = [];
 
-		if($filter){
-			$data = $this->produk->findAll();
-		}else
-			$data = $this->produk->findAll();
 
-		return $this->response->setJSON($data);
+		$produk 		= new \App\Models\Produk();
+		$order 			= $this->request->getGet('order');
+		$column 		= $this->request->getGet('columns');
+		$column_order 	= $column[$order[0]['column']]['data'];
+		$keyword 		= $this->request->getGet('search');
+		$totalPerpage 	= $this->request->getGet('length');
+		$start 			= $this->request->getGet('start');
+		
+		$pages = 1;
+		if($start > 0){
+			$pages = floor($start / $totalPerpage) + 1;
+		}
+		
+		
+		$total_data = count($produk->findAll());
+		if($keyword['value'] !=''){
+			$total_data = count($produk->orderBy($column_order, $order[0]['dir'])
+				->like("nama_produk","%".$keyword['value']."%")
+				->findAll());
+		}
+
+		$data = $produk->orderBy($column_order, $order[0]['dir'])
+			->like("nama_produk","%".$keyword['value']."%")
+			->paginate($totalPerpage, "group", $pages);
+
+		return $this->response->setJSON([
+			"data"=> $data,
+			"draw"=> $this->request->getGet('draw'),
+			"recordsTotal"=> $total_data,
+			"recordsFiltered"=> $total_data
+		]);
 	}
 
 	public function store(){

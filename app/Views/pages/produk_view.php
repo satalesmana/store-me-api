@@ -92,6 +92,7 @@
 </div>
 
 <script>
+    //tampil data
     $(document).ready(function() {
         var EDIT_DATA="";
 
@@ -100,7 +101,8 @@
             "processing": true,
             "serverSide": true,
             "columns":[
-                {   "data" : "images",
+                { "data" : "id"},
+                {   "data" : "gambar",
                     "render": function ( data, type, full, meta ) {
                         //console.log(data)
                         if( data != null){
@@ -110,7 +112,7 @@
                     } 
                 },
                 { "data" : "nama_produk" },
-                { "data" : "nama_kategori" },
+                { "data" : "kategori.nama_kategori" },
                 { "data" : "harga_beli" },
                 { "data" : "harga_jual" },
                 { "data" : "stock" },
