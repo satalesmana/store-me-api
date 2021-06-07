@@ -1,5 +1,5 @@
-<div class="container-fluid sticky-top px-2 pt-2">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded border">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm border-bottom sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/app">Store Me</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-navbar-menu" aria-controls="mobile-navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,4 +42,3 @@
             </div>
         </div>
     </nav>
-</div>
