@@ -54,9 +54,13 @@ $routes->add('api/produk/(:segment)/edit', 'ProdukController::show/$1');
 $routes->post('api/produk/(:segment)/update', 'ProdukController::update/$1');
 $routes->get('api/produk/(:segment)/delete', 'ProdukController::destroy/$1');
 
-$routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
+$routes->get('/pesanan', 'PesananController::index');
+
+//$routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
+$routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
 {
     $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+    $routes->resource('pesanan',['controller' =>'PesananController', 'except' => 'new,edit']);
     
 });
 
