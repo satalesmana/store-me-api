@@ -60,6 +60,10 @@ $routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], func
     
 });
 
+$routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){
+    $routes->get('kategori', 'DropdownController::categoriitem');
+});
+
 $routes->group('auth', ['namespace' => 'App\Controllers'], function($routes)
 {
     $routes->post('register', 'Auth::register');

@@ -46,8 +46,8 @@
 
             <div class="form-group">
                 <label>Kategori</label>
-                <select name="kategori" class="form-control">
-
+                <select name="kategori" class="form-control" id="drowdown_kategori">
+                    <option value="0">--Pilih Kategori---</option>
                 </select>
             </div>
 
@@ -120,6 +120,22 @@
             ]
         });
 
+        $.fn.dropdownListKategori = function(){
+            $.ajax({
+                url:'<?php echo site_url("cmb/kategori"); ?>',
+                dataType:"json",
+                type:'GET',
+                success:function(res){
+                    $('#drowdown_kategori').html('<option value="0">--Pilih Kategori--</option>')
+                    res.map((item,index)=>{
+                        $('#drowdown_kategori').append('<option value="'+item.id+'">'+item.nama_kategori+'</option>')
+                    })
+                }
+            })
+        }
+
+        $(this).dropdownListKategori();
+        
         $("#btn_reload").click(function(){
             produk_table.ajax.reload();
         });
