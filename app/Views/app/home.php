@@ -37,7 +37,7 @@
     <!-- Products in Home -->
     <div class="container-fluid p-2">
         <div class="row p-0 m-0" style="width: 100% !important;">
-            <div class="produk col-md-4 p-2">
+            <div class="produk col-xs-12 col-sm-6 col-md-4 col-lg-3 p-2">
                 <div class="card shadow-sm p-0">
                     <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
                     <div class="card-body">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="produk col-md-4 p-2">
+            <div class="produk col-xs-12 col-sm-6 col-md-4 col-lg-3 p-2">
                 <div class="card shadow-sm p-0">
                     <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
                     <div class="card-body">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="produk col-md-4 p-2">
+            <div class="produk col-xs-12 col-sm-6 col-md-4 col-lg-3 p-2">
                 <div class="card shadow-sm p-0">
                     <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
                     <div class="card-body">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="produk col-md-4 p-2">
+            <div class="produk col-xs-12 col-sm-6 col-md-4 col-lg-3 p-2">
                 <div class="card shadow-sm p-0">
                     <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
                     <div class="card-body">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="produk col-md-4 p-2">
+            <div class="produk col-xs-12 col-sm-6 col-md-4 col-lg-3 p-2">
                 <div class="card shadow-sm p-0">
                     <img src="http://via.placeholder.com/400" class="card-img-top product-image" alt="Produk 1">
                     <div class="card-body">

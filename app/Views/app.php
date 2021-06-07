@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/lib/app/bootstrap.min.css" rel="stylesheet">
     <link href="/lib/app/custom.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cab03a59e6.js" crossorigin="anonymous"></script>
     <title>Store Me</title>
 </head>
 <body>

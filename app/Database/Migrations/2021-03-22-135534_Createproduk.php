@@ -23,10 +23,30 @@ class Createproduk extends Migration
 				'type' => 'INT',
 				'constraint' => 5,
 			],
-			'keterangan' => [
+			'deskripsi' => [
 				'type' => 'TEXT',
 				'null' => true,
+				// deskripsi
 			],
+			'harga_beli' => [
+				'type' => 'INT',
+				'null' => false,
+				'constrait' => 12,
+			],
+			'harga_jual' => [
+				'type' => 'INT',
+				'null' => false,
+				'constrait' => 12,
+			],
+			'stock' => [
+				'type' => 'INT',
+				'null' => true,
+				'constrait' => 5,
+			],
+			'gambar' => [
+				'type' => 'TEXT'
+			],
+
 		]);
 		$this->forge->addKey('id', true);
 		$this->forge->createTable('produk');
