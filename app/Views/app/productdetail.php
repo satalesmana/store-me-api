@@ -56,4 +56,6 @@
                 </div>
     </div>
 </div>
+</div>
+</div>
 <!-- End product detail -->
