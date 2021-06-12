@@ -28,6 +28,7 @@ class Produk extends Model
 	protected $validationRules      = [
 		'nama_produk' => 'required',
 		'kategori_id' => 'required',
+		'harga_beli'  => 'required|integer'
 	];
 	protected $validationMessages   = [];
 	protected $skipValidation       = false;
