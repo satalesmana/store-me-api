@@ -63,6 +63,14 @@ class ProdukController extends BaseController
 	public function store(){
 
 		$input = $this->request->getPost();
+		$input['gambar'] = "-";
+		try{
+			$gambar = $this->request->getFile('gambar');
+			$file_name = $gambar->getRandomName();
+			$file_path = 'uploads';
+			$gambar->move("./".$file_path,$file_name);
+			$input['gambar'] = base_url()."/".$file_path."/".$file_name;
+		}catch(\Exception $e){}
 
 		if ($this->produk->save($input) === false)
 		{
@@ -81,9 +89,29 @@ class ProdukController extends BaseController
 	}
 
 	public function update($id){
+		$produkSelect = $this->produk->find($id);
+
 		$input = $this->request->getPost();
-		$this->produk->update($id,$input);
-		return $this->response->setJSON(["message"=>"data berhasil di update"]);
+		$input['id'] = $id;
+
+		$input['gambar'] = $produkSelect['gambar'];
+		try{
+			$gambar = $this->request->getFile('gambar');
+			if($gambar){
+				$file_name = $gambar->getRandomName();
+				$file_path = 'uploads';
+				$gambar->move("./".$file_path,$file_name);
+				$input['gambar'] = base_url()."/".$file_path."/".$file_name;
+			}
+			
+		}catch(\Exception $e){}
+		
+		if ($this->produk->save($input) === false)
+		{
+			return  $this->response->setStatusCode(422)
+				->setJSON([$this->produk->errors()]);
+		}else
+			return $this->response->setJSON(["message"=>"data berhasil di perbaharui"]);
 	}
 
 	public function destroy($id){

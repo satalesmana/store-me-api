@@ -41,12 +41,12 @@
             
             <div class="form-group">
                 <label>Nama Produk</label>
-                <input type="text" class="form-control" name="nama_kategori" placeholder="Masukan kategori">
+                <input type="text" class="form-control" name="nama_produk" placeholder="Masukn Nama Produk">
             </div>
 
             <div class="form-group">
                 <label>Kategori</label>
-                <select name="kategori" class="form-control" id="drowdown_kategori">
+                <select name="kategori_id" class="form-control" id="drowdown_kategori">
                     <option value="0">--Pilih Kategori---</option>
                 </select>
             </div>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label >Images</label>
-                <input type="file" class="form-control" name="images" placeholder="Pilih gambar">
+                <input type="file" class="form-control" name="gambar" placeholder="Pilih gambar">
             </div>
         </form>
       </div>
@@ -211,11 +211,18 @@
         })
 
         $("#btn_edit").click(function(){
+            var form = $('#form_produk')[0];
+            var data = new FormData(form);
+            
             $.ajax({
-                url:'<?php echo site_url("api/kategori"); ?>/'+EDIT_DATA+"/update",
-                dataType:"json",
-                data:$("#form_").serialize(),
+                url:'<?php echo site_url("api/produk"); ?>/'+EDIT_DATA+"/update",
+                data:$("#form_produk").serialize(),
                 type:'POST',
+                enctype: 'multipart/form-data',
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
                 beforeSend:function(){
                     $("#pesan_holder").html("Loading....")
                 },
@@ -231,11 +238,11 @@
         });
 
         $("#btn_save").click(function(){
-            var form = $('#form_kategori')[0];
+            var form = $('#form_produk')[0];
             var data = new FormData(form);
 
             $.ajax({
-                url:'<?php echo site_url("api/kategori/add"); ?>',
+                url:'<?php echo site_url("api/produk/add"); ?>',
                 data:$("#form_produk").serialize(),
                 type:'POST',
                 enctype: 'multipart/form-data',
