@@ -13,6 +13,12 @@ class MemberController extends BaseController
 
 	public function index()
 	{
+		$data['page'] = 'pages/member_view';
+		return view("main",$data);
+	}
+
+	public function getdata()
+	{
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

@@ -66,7 +66,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <?php echo anchor("/kategori","Kategori",["class"=>"nav-link"]); ?>
                                     <?php echo anchor("/produk","Produk",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/customer","Pelanggan",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/member","Pelanggan",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
 

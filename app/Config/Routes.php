@@ -64,6 +64,8 @@ $routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
     
 });
 
+$routes->resource('member', ['controller' => 'MemberController']);
+
 $routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('kategori', 'DropdownController::categoriitem');
 });
