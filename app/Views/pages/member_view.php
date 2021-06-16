@@ -11,7 +11,7 @@
     <button type="button" class="btn btn-primary" id="btn_add">Add New Item </button>
 </div>
 
-<table id="produkTable" class="display" style="width:100%">
+<table id="memberTable" class="display" style="width:100%">
     <thead class="bg">
         <tr>
             <th>Nama</th>
@@ -22,3 +22,31 @@
         </tr>
     </thead>
 </table>
+
+<script>
+    //tampil data
+    $(document).ready(function() {
+        var EDIT_DATA="";
+
+        var produk_table = $('#memberTable').DataTable({
+            "ajax": "<?php echo site_url('api/member'); ?>",
+            "processing": true,
+            "serverSide": true,
+            "columns":[
+                { "data" : "nama_member" },
+                { "data" : "email" },
+                {   "data" : "foto",
+                    "render": function ( data, type, full, meta ) {
+                        //console.log(data)
+                        if( data != null){
+                            return "<img src='"+data+"' width='30px'/>"
+                        }else
+                            return "-"
+                    } 
+                },
+                { "data" : "alamat" },
+                { "data" : null, defaultContent: '<button class="btn btn-warning btn-edit btn-sm"><i class="fa fa-pencil"></i> Edit </button> <button class="btn btn-delete btn-danger btn-sm"><i class="fa fa-trash"></i> delete </button>' },
+            ]
+        });
+    })
+</script>

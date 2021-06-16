@@ -22,16 +22,40 @@ class MemberController extends BaseController
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-		$pages = ($this->request->getGet('pages') !='' ) ? $this->request->getGet('pages') : 1;
-		$perpages = ($this->request->getGet('perpages') !='' ) ? $this->request->getGet('perpages') : 10;
+		$filter = $this->request->getGet('keyword');
+		$data = [];
+
+
+		$member 		= new \App\Models\Member();
+		$order 			= $this->request->getGet('order');
+		$column 		= $this->request->getGet('columns');
+		$column_order 	= $column[$order[0]['column']]['data'];
+		$keyword 		= $this->request->getGet('search');
+		$totalPerpage 	= $this->request->getGet('length');
+		$start 			= $this->request->getGet('start');
+		
+		$pages = 1;
+		if($start > 0){
+			$pages = floor($start / $totalPerpage) + 1;
+		}
+		
+		
+		$total_data = count($member->findAll());
+		if($keyword['value'] !=''){
+			$total_data = count($member->orderBy($column_order, $order[0]['dir'])
+				->like("nama_member","%".$keyword['value']."%")
+				->findAll());
+		}
+
+		$data = $member->orderBy($column_order, $order[0]['dir'])
+			->like("nama_member","%".$keyword['value']."%")
+			->paginate($totalPerpage, "group", $pages);
 
 		return $this->response->setJSON([
-			'data' => $this->member->paginate($perpages,'group1',$pages),
-			'pager' =>[
-				'total'=> count($this->member->findAll()),
-				'perpage'=> $perpages,
-				'pages' =>  $pages
-			]
+			"data"=> $data,
+			"draw"=> $this->request->getGet('draw'),
+			"recordsTotal"=> $total_data,
+			"recordsFiltered"=> $total_data
 		]);
 	}
 
