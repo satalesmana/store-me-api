@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 class MemberController extends BaseController
 {
+	var $member;
+	
 	public function __construct()
 	{
 		$this->member = new \App\Models\Member();
@@ -17,8 +19,7 @@ class MemberController extends BaseController
 		return view("main",$data);
 	}
 
-	public function getdata()
-	{
+	public function getdata(){
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

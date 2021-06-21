@@ -55,7 +55,8 @@ $routes->post('api/produk/(:segment)/update', 'ProdukController::update/$1');
 $routes->get('api/produk/(:segment)/delete', 'ProdukController::destroy/$1');
 
 $routes->get('/pesanan', 'PesananController::index');
-
+$routes->resource('member', ['controller' => 'MemberController']);
+$routes->get('/api/member', 'MemberController::getdata');
 //$routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
 $routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
 {
@@ -64,7 +65,7 @@ $routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
     
 });
 
-$routes->resource('member', ['controller' => 'MemberController']);
+
 
 $routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('kategori', 'DropdownController::categoriitem');
