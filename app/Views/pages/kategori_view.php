@@ -130,9 +130,9 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url:'<?php echo site_url("api/kategori"); ?>/'+data.id+"/delete",
+                            url:'<?php echo site_url("api/kategori"); ?>/'+data.id,
                             dataType:"json",
-                            type:'GET',
+                            type:'DELETE',
                             success:function(res){
                                 Swal.fire(
                                     'Deleted!',
@@ -160,10 +160,10 @@
 
         $("#btn_edit").click(function(){
             $.ajax({
-                url:'<?php echo site_url("api/kategori"); ?>/'+EDIT_DATA+"/update",
+                url:'<?php echo site_url("api/kategori"); ?>/'+EDIT_DATA,
                 dataType:"json",
                 data:$("#form_kategori").serialize(),
-                type:'POST',
+                type:'PUT',
                 beforeSend:function(){
                     $("#pesan_holder").html("Loading....")
                 },
@@ -183,7 +183,7 @@
             var data = new FormData(form);
 
             $.ajax({
-                url:'<?php echo site_url("api/kategori/add"); ?>',
+                url:'<?php echo site_url("api/kategori"); ?>',
                 data:$("#form_kategori").serialize(),
                 type:'POST',
                 enctype: 'multipart/form-data',

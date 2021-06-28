@@ -32,36 +32,30 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+
 
 // Ini routing untuk user.
-$routes->get('/app', 'App::serve');
-$routes->get('/app/(:segment)', 'App::serve/$1');
-$routes->get('/app/(:segment)/(:segment)', 'App::serve/$1/$2');
+$routes->group('app',['namespace' => 'App\Controllers'], function($routes){
+    $routes->get('', 'App::serve');
+    $routes->get('(:segment)', 'App::serve/$1');
+    $routes->get('(:segment)/(:segment)', 'App::serve/$1/$2');
+});
 
-$routes->get('/profile', 'Profile::index');
-$routes->get('/kategori', 'KategoriController::index');
-$routes->get('/api/kategori','KategoriController::getdata');
-$routes->post('api/kategori/add', 'KategoriController::store');
-$routes->add('api/kategori/(:segment)/edit', 'KategoriController::show/$1');
-$routes->post('api/kategori/(:segment)/update', 'KategoriController::update/$1');
-$routes->get('api/kategori/(:segment)/delete', 'KategoriController::destroy/$1');
+$routes->group('/', ['namespace' => 'App\Controllers'], function($routes){
+    $routes->get('', 'Home::index');
+    $routes->get('kategori', 'KategoriController::index');
+    $routes->get('produk', 'ProdukController::index');
+    $routes->get('profile', 'Profile::index');
+    $routes->get('pesanan', 'PesananController::index');
+});
 
-$routes->get('/produk', 'ProdukController::index');
-$routes->get('/api/produk', 'ProdukController::getdata');
-$routes->post('api/produk/add', 'ProdukController::store');
-$routes->add('api/produk/(:segment)/edit', 'ProdukController::show/$1');
-$routes->post('api/produk/(:segment)/update', 'ProdukController::update/$1');
-$routes->get('api/produk/(:segment)/delete', 'ProdukController::destroy/$1');
-
-$routes->get('/pesanan', 'PesananController::index');
-
-//$routes->group('api', ['filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
-$routes->group('api', ['namespace' => 'App\Controllers'], function($routes)
+$routes->group('api', [ 'namespace' => 'App\Controllers'], function($routes)
 {
-    $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+    $routes->resource('kategori',['controller' =>'KategoriController', 'except' => 'new,edit']);
+    $routes->resource('produk',['controller' =>'ProdukController', 'except' => 'new,edit']);
     $routes->resource('pesanan',['controller' =>'PesananController', 'except' => 'new,edit']);
-    
+
+    $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
 });
 
 $routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){

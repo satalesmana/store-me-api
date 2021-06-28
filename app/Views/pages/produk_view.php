@@ -179,9 +179,9 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url:'<?php echo site_url("api/produk"); ?>/'+data.id+"/delete",
+                            url:'<?php echo site_url("api/produk"); ?>/'+data.id,
                             dataType:"json",
-                            type:'GET',
+                            type:'DELETE',
                             success:function(res){
                                 Swal.fire(
                                     'Deleted!',
@@ -215,14 +215,9 @@
             var data = new FormData(form);
             
             $.ajax({
-                url:'<?php echo site_url("api/produk"); ?>/'+EDIT_DATA+"/update",
+                url:'<?php echo site_url("api/produk"); ?>/'+EDIT_DATA,
                 data:$("#form_produk").serialize(),
-                type:'POST',
-                enctype: 'multipart/form-data',
-                data: data,
-                processData: false,
-                contentType: false,
-                cache: false,
+                type:'PUT',
                 beforeSend:function(){
                     $("#pesan_holder").html("Loading....")
                 },
@@ -242,7 +237,7 @@
             var data = new FormData(form);
 
             $.ajax({
-                url:'<?php echo site_url("api/produk/add"); ?>',
+                url:'<?php echo site_url("api/produk"); ?>',
                 data:$("#form_produk").serialize(),
                 type:'POST',
                 enctype: 'multipart/form-data',
