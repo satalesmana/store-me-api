@@ -18,6 +18,7 @@
         <script src="<?php echo base_url('/lib/bootstrap-4'); ?>/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/templates/sbadmin'); ?>/js/scripts.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/lib'); ?>/datatable/datatables.js" type="text/javascript"></script>
+        <script src="<?php echo base_url('/lib'); ?>/dist/dropzone.js" type="text/javascript"></script>
     </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -117,8 +118,8 @@
 
     </body>
     <script>
-         if(!window.localStorage.TOKEN)
-            window.location.href='<?php echo site_url("/app"); ?>'
+        //  if(!window.localStorage.TOKEN)
+        //     window.location.href='<?php echo site_url("/app"); ?>'
 
     </script>
 </html>

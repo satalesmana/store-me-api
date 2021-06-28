@@ -48,6 +48,7 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('profile', 'Profile::index');
     $routes->get('pesanan', 'PesananController::index');
     $routes->get('member', 'MemberController::index');
+    $routes->get('upload', 'UploadController::index');
 });
 
 $routes->group('api', [ 'namespace' => 'App\Controllers'], function($routes)
@@ -56,6 +57,7 @@ $routes->group('api', [ 'namespace' => 'App\Controllers'], function($routes)
     $routes->resource('produk',['controller' =>'ProdukController', 'except' => 'new,edit']);
     $routes->resource('pesanan',['controller' =>'PesananController', 'except' => 'new,edit']);
     $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+    $routes->resource('upload',['controller' =>'UploadController', 'except' => 'new,edit']);
 });
 
 
