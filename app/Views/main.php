@@ -117,8 +117,8 @@
 
     </body>
     <script>
-        if(!window.localStorage.TOKEN)
-            window.location.href='<?php echo site_url("/app"); ?>'
-
+        $.ajaxSetup({
+            headers: { 'Authorization': 'Bearer <?php echo $_SESSION['token']; ?>' }
+        });
     </script>
 </html>

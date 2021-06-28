@@ -41,7 +41,8 @@ $routes->group('app',['namespace' => 'App\Controllers'], function($routes){
     $routes->get('(:segment)/(:segment)', 'App::serve/$1/$2');
 });
 
-$routes->group('/', ['namespace' => 'App\Controllers'], function($routes){
+$routes->group('/', ['filter'=>'web', 'namespace' => 'App\Controllers'], function($routes){
+    $routes->post('me', 'Auth::me');
     $routes->get('', 'Home::index');
     $routes->get('kategori', 'KategoriController::index');
     $routes->get('produk', 'ProdukController::index');
@@ -49,7 +50,7 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('pesanan', 'PesananController::index');
 });
 
-$routes->group('api', [ 'namespace' => 'App\Controllers'], function($routes)
+$routes->group('api', [ 'filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
 {
     $routes->resource('kategori',['controller' =>'KategoriController', 'except' => 'new,edit']);
     $routes->resource('produk',['controller' =>'ProdukController', 'except' => 'new,edit']);
@@ -66,7 +67,6 @@ $routes->group('auth', ['namespace' => 'App\Controllers'], function($routes)
 {
     $routes->post('register', 'Auth::register');
     $routes->post('login', 'Auth::login');
-    $routes->post('me', 'Auth::me');
 });
 /*
  * --------------------------------------------------------------------

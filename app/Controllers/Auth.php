@@ -119,19 +119,31 @@ class Auth extends BaseController
         int $responseCode = ResponseInterface::HTTP_OK
     )
     {
+        $session = \Config\Services::session();
+
         try {
             $model = new Users();
             $user = $model->findUserByEmailAddress($emailAddress);
             unset($user['password']);
-
+            
             helper('jwt');
+
+            $token = getSignedJWTForUser($emailAddress);
+            
+            if($user){
+                $newdata = [
+                    'token'  => $token,
+                    'user'     => $user
+                ];
+                $session->set($newdata);
+            }
 
             return $this
                 ->getResponse(
                     [
                         'message' => 'User authenticated successfully',
                         'user' => $user,
-                        'access_token' => getSignedJWTForUser($emailAddress)
+                        'access_token' => $token
                     ]
                 );
         } catch (Exception $exception) {
