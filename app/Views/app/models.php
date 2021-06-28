@@ -58,7 +58,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Masuk</button>
+                <button type="button" class="btn btn-primary" id="btn-login">Masuk</button>
             </div>
         </div>
     </div>

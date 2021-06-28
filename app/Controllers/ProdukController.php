@@ -15,8 +15,13 @@ class ProdukController extends BaseController
 
 	public function index()
 	{
-		$data['page'] = 'pages/produk_view';
-		return view("main",$data);
+		$segment = $this->request->uri->getSegment(1);
+		if($segment=='api'){
+			return $this->getData();
+		}else{
+			$data['page'] = 'pages/produk_view';
+			return view('main',$data);
+		}
 	}
 
 	public function getdata(){
@@ -59,7 +64,7 @@ class ProdukController extends BaseController
 		]);
 	}
 
-	public function store(){
+	public function create(){
 
 		$input = $this->request->getPost();
 		$input['gambar'] = "-";
@@ -90,20 +95,19 @@ class ProdukController extends BaseController
 	public function update($id){
 		$produkSelect = $this->produk->find($id);
 
-		$input = $this->request->getPost();
+		$input = $this->request->getRawInput();
 		$input['id'] = $id;
 
-		$input['gambar'] = $produkSelect['gambar'];
-		try{
-			$gambar = $this->request->getFile('gambar');
-			if($gambar){
-				$file_name = $gambar->getRandomName();
-				$file_path = 'uploads';
-				$gambar->move("./".$file_path,$file_name);
-				$input['gambar'] = base_url()."/".$file_path."/".$file_name;
-			}
-			
-		}catch(\Exception $e){}
+		// $input['gambar'] = $produkSelect['gambar'];
+		// try{
+		// 	$gambar = $this->request->getFile('gambar');
+		// 	if($gambar){
+		// 		$file_name = $gambar->getRandomName();
+		// 		$file_path = 'uploads';
+		// 		$gambar->move("./".$file_path,$file_name);
+		// 		$input['gambar'] = base_url()."/".$file_path."/".$file_name;
+		// 	}
+		// }catch(\Exception $e){}
 		
 		if ($this->produk->save($input) === false)
 		{
@@ -113,7 +117,7 @@ class ProdukController extends BaseController
 			return $this->response->setJSON(["message"=>"data berhasil di perbaharui"]);
 	}
 
-	public function destroy($id){
+	public function delete($id){
 		$this->produk->delete($id);
 		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}

@@ -10,10 +10,14 @@ class KategoriController extends BaseController
 	{
 		$kategori = new \App\Models\Kategori();
 		
-
 		$data['kategori_list'] = $kategori->findAll();
 		$data['page'] = 'pages/kategori_view';
-		return view("main",$data);
+		
+		$segment = $this->request->uri->getSegment(1);
+		if($segment=='api'){
+			return $this->getData();
+		}else
+			return view('main',$data);
 	}
 
 	public function getdata(){
@@ -61,19 +65,34 @@ class KategoriController extends BaseController
 	}
 
 	public function update($id){
+		
 		$kategori = new \App\Models\Kategori();
-		$input=$this->request->getPost();
-		$kategori->update($id,$input);
-		return $this->response->setJSON(["message"=>"data berhasil di rubah"]);
+		$input=$this->request->getRawInput();
+		$input["id"] = $id;
+		
+		// try{
+		// 	$gambar = $this->request->getFile('images');
+		// 	$file_name = $gambar->getRandomName();
+		// 	$file_path = 'uploads';
+		// 	$gambar->move("./".$file_path,$file_name);
+		// 	$input['images'] = base_url()."/".$file_path."/".$file_name;
+		// }catch(\Exception $e){}
+
+		if ($kategori->save($input) === false)
+		{
+			return  $this->response->setStatusCode(422)
+				->setJSON([$kategori->errors()]);
+		}else
+			return $this->response->setJSON(["message"=>"data berhasil di perbharui"]);
 	}
 
-	public function destroy($id){
+	public function delete($id){
 		$kategori = new \App\Models\Kategori();
 		$kategori->delete($id);
 		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}
 
-	public function store(){
+	public function create(){
 		$kategori = new \App\Models\Kategori();
 		$input = $this->request->getPost();
 

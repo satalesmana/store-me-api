@@ -31,6 +31,17 @@
     <script src="/lib/app/bootstrap.bundle.min.js"></script>
     <script src="/lib/app/jquery.min.js"></script>
     <script>
+        $('#unregisterd_user').hide();
+        $('#registerd_user').hide();
+
+        if(window.localStorage.TOKEN){
+            $('#registerd_user').show();
+            $('#user-account-email').html(window.localStorage.USER_EMAIL)
+            $('#user-dropdown').html(window.localStorage.USER_NAME)
+        }else
+            $('#unregisterd_user').show();
+
+
         const pages = ['home', 'product-detail', 'product-list', 'profile'];
         const showPage = (page = null) => {
             pages.forEach(e => {
@@ -41,6 +52,47 @@
 
         $(document).ready(() => {
             showPage('<?= $page ?>')
+
+            $.ajax({
+                url:'<?php echo site_url("cmb/kategori"); ?>',
+                dataType:"json",
+                type:'GET',
+                success:function(res){
+                            
+                    $('#product-category').html('<li><a class="dropdown-item" href="#">Semua kategori</a></li>')
+                    res.map((item,index)=>{
+                        $('#product-category').append('<li><a class="dropdown-item" href="#">'+item.nama_kategori+'</a></li>')
+                    })
+                }
+            })
+
+
+            $('#btn-login').click(function(){
+                $.ajax({
+                    url:'<?php echo site_url("/auth/login"); ?>',
+                    dataType:"json",
+                    data:{
+                        email: $('#login-email').val(),
+                        password: $('#login-password').val(),
+                    },
+                    type:'POST',
+                    success:function(res){
+                        window.localStorage.USER_NAME = res.user.name
+                        window.localStorage.USER_EMAIL = res.user.email
+                        window.localStorage.TOKEN = res.access_token
+
+                        window.location.href='<?php echo site_url("/app"); ?>'
+                    }
+                })
+            });
+
+            $("#user-account-logout").click(function(){
+                window.localStorage.removeItem('USER_NAME')
+                window.localStorage.removeItem('USER_EMAIL')
+                window.localStorage.removeItem('TOKEN')
+                window.location.href='<?php echo site_url("/app"); ?>'
+            })
+
         });
     </script>
 </body>

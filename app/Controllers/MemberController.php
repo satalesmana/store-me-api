@@ -15,8 +15,13 @@ class MemberController extends BaseController
 
 	public function index()
 	{
-		$data['page'] = 'pages/member_view';
-		return view("main",$data);
+		$segment = $this->request->uri->getSegment(1);
+		if($segment=='api'){
+			return $this->getData();
+		}else{
+			$data['page'] = 'pages/member_view';
+			return view('main',$data);
+		}
 	}
 
 	public function getdata(){
