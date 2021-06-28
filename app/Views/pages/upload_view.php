@@ -37,10 +37,23 @@
                     </div>
                 </form>
             </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div style="float: right;" >
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btn_save">Save changes</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
     var myDropzone = new Dropzone("#my-awesome-dropzone", { url: "/public/uploads"});
+    $("#btn_add").click(function(){
+        $("#btn_save").show();
+
+        $('#ProdukFormModal').modal('toggle')
+    })
 </script>
