@@ -55,9 +55,13 @@ $routes->group('api', [ 'filter'=>'auth', 'namespace' => 'App\Controllers'], fun
     $routes->resource('kategori',['controller' =>'KategoriController', 'except' => 'new,edit']);
     $routes->resource('produk',['controller' =>'ProdukController', 'except' => 'new,edit']);
     $routes->resource('pesanan',['controller' =>'PesananController', 'except' => 'new,edit']);
-
     $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
 });
+
+$routes->get('/media', 'MediaController::view');
+$routes->get('/api/media', 'MediaController::get');
+$routes->get('/api/media/(:section)', 'MediaController::get/$1');
+$routes->post('/api/media', 'MediaController::add');
 
 $routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('kategori', 'DropdownController::categoriitem');
