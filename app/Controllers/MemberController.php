@@ -66,11 +66,15 @@ class MemberController extends BaseController
 	}
 
 	public function edit($id){
-
+		
 	}
 
 	public function show($id){
-
+		$this->response->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Headers', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+			
+		return $this->response->setJSON($this->member->find($id));
 	}
 
 	public function create(){
@@ -90,11 +94,22 @@ class MemberController extends BaseController
 	}
 
 	public function update($id){
+		$memberSelect = $this->member->find($id);
 
+		$input = $this->request->getRawInput();
+		$input['id'] = $id;
+
+		if ($this->member->save($input) === false)
+		{
+			return  $this->response->setStatusCode(422)
+				->setJSON([$this->member->errors()]);
+		}else
+			return $this->response->setJSON(["message"=>"data berhasil di perbaharui"]);
 	}
 
 	public function delete($id){
-
+		$this->member->delete($id);
+		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}
 
 }

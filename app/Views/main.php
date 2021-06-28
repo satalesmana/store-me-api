@@ -117,7 +117,7 @@
 
     </body>
     <script>
-        if(!window.localStorage.TOKEN)
+         if(!window.localStorage.TOKEN)
             window.location.href='<?php echo site_url("/app"); ?>'
 
     </script>
