@@ -79,6 +79,10 @@ class Auth extends BaseController
        
     }
 
+    public function logout(){
+        session_destroy();
+    }
+
     public function me(){
         $key = Services::getSecretKey();
        
