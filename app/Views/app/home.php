@@ -54,57 +54,73 @@
     <!-- Products in Home -->
     <div class="container">
         <div class="container-fluid p-2">
-            <div class="row p-0 m-0" style="width: 100% !important;">
-                <div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">
-                    <div class="card shadow-sm p-0">
-                        <img src="http://via.placeholder.com/150" class="card-img-top" alt="Produk 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Produk 1</h5>
-                            <p class="card-text">Deskripsi produk 1.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">
-                    <div class="card shadow-sm p-0">
-                        <img src="http://via.placeholder.com/150" class="card-img-top" alt="Produk 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Produk 2</h5>
-                            <p class="card-text">Deskripsi produk 2.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">
-                    <div class="card shadow-sm p-0">
-                        <img src="http://via.placeholder.com/150" class="card-img-top" alt="Produk 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Produk 3</h5>
-                            <p class="card-text">Deskripsi produk 3.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">
-                    <div class="card shadow-sm p-0">
-                        <img src="http://via.placeholder.com/150" class="card-img-top" alt="Produk 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Produk 4</h5>
-                            <p class="card-text">Deskripsi produk 4.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">
-                    <div class="card shadow-sm p-0">
-                        <img src="http://via.placeholder.com/150" class="card-img-top" alt="Produk 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Produk 5</h5>
-                            <p class="card-text">Deskripsi produk 5.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row p-0 m-0" style="width: 100% !important;" id="itemProduk">
+                               
+                
             </div>
         </div>
     </div>
     <!-- End Products in Home -->
 </div>
+
+<script>
+    $(document).ready(function(){
+       // var html = "";
+        $.get( "<?php echo site_url('app/produkdata'); ?>", function( data ) {
+            for(var i=0; i < data.length; i++){
+                var gambar ="http://via.placeholder.com/150";
+                if(data[i].gambar !='-'){
+                    gambar = data[i].gambar
+                }
+
+                var html = '<div class="produk col-xs-12 col-sm-6 col-md-2 col-lg-2 p-2">';
+                html += '<div class="card shadow-sm p-0">';
+                html += '<img src="'+gambar+'" class="card-img-top" alt="Produk 1">';
+                html += '<div class="card-body">';
+                html += '<h5 class="card-title">'+data[i].nama_produk+'</h5>';
+                html += '<p class="card-text">RP. '+data[i].harga_jual+'</p>';
+                html += '<div class="d-flex  justify-content-between">';
+                html += '<button onClick="$(this).prosesBeli('+data[i].id+')" class="btn btn-primary">Beli</button>'
+                html += '<button onClick="$(this).cekDetail('+data[i].id+')" class="btn btn-secondary">Detail</button>'
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+
+                $("#itemProduk").append(html);
+            }
+        });
+
+        $.fn.prosesBeli = function(id){
+            var keranjang = [];
+
+            if(window.localStorage.keranjang){
+                keranjang = window.localStorage.keranjang.split(",");
+                if(keranjang.includes(id.toString())){
+                    alert("data keranjang sudah ada")
+                    return false;
+                }else{
+                    keranjang.push(id);
+                }
+
+            }else{
+                keranjang.push(id);
+            }
+            
+            window.localStorage.keranjang= keranjang.join();
+
+            alert("data berhasil ditambahkan ke kranjang")
+            location.reload();
+
+        }
+
+        $.fn.cekDetail = function(id){
+            window.location.href = "<?php echo site_url('app/product-detail') ?>/" + id
+        }
+        
+    });
+
+</script>
 
 <style>
 .carousel {

@@ -121,5 +121,19 @@
         $.ajaxSetup({
             headers: { 'Authorization': 'Bearer <?php echo $_SESSION['token']; ?>' }
         });
+
+        $(document).ready(function(){
+                
+                $('#sidebarToggle').click(function(){
+                    let togleApp = $('body').hasClass('sb-sidenav-toggled')
+
+                    if(togleApp){
+                        $('body').removeClass('sb-sidenav-toggled') 
+                    }else{
+                        $('body').addClass('sb-sidenav-toggled')
+                    }
+
+                })
+            })
     </script>
 </html>

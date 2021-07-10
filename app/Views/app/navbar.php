@@ -42,6 +42,7 @@
                         <img src="http://via.placeholder.com/240" class="cs-user-profile-pic rounded-circle m-2">
                         <h6 class="text-center" id="user-account-email"></h6>
                     </div>
+                    <li><a class="dropdown-item" id="user-keranjang">Keranjang</a></li>
                     <li><a class="dropdown-item" id="user-account-logout">Log Out</a></li>
                 </ul>
             </li>

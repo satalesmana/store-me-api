@@ -36,9 +36,12 @@ $routes->setAutoRoute(false);
 
 // Ini routing untuk user.
 $routes->group('app',['namespace' => 'App\Controllers'], function($routes){
+    $routes->get('produkdata', 'ProdukController::index');
+    
     $routes->get('', 'App::serve');
     $routes->get('(:segment)', 'App::serve/$1');
     $routes->get('(:segment)/(:segment)', 'App::serve/$1/$2');
+
 });
 
 $routes->group('/', ['filter'=>'web', 'namespace' => 'App\Controllers'], function($routes){

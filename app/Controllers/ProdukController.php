@@ -16,12 +16,21 @@ class ProdukController extends BaseController
 	public function index()
 	{
 		$segment = $this->request->uri->getSegment(1);
+		
 		if($segment=='api'){
 			return $this->getData();
+		}elseif($segment =='app'){
+			return $this->getAppData();
 		}else{
 			$data['page'] = 'pages/produk_view';
 			return view('main',$data);
 		}
+	}
+
+	private function getAppData()
+	{
+		$data = $this->produk->findAll();
+		return $this->response->setJSON($data);
 	}
 
 	public function getdata(){

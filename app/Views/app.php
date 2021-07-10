@@ -8,6 +8,8 @@
     <link href="/lib/app/custom.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cab03a59e6.js" crossorigin="anonymous"></script>
     <title>Store Me</title>
+    <script src="/lib/app/bootstrap.bundle.min.js"></script>
+    <script src="/lib/app/jquery.min.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -28,11 +30,20 @@
     <!-- Profile Page -->
     <?= view('app/profile') ?>
     <!-- End Profile Page -->
-    <script src="/lib/app/bootstrap.bundle.min.js"></script>
-    <script src="/lib/app/jquery.min.js"></script>
+    
     <script>
         $('#unregisterd_user').hide();
         $('#registerd_user').hide();
+
+        if(window.localStorage.keranjang){
+            const item =window.localStorage.keranjang.split(",");
+
+            $('#user-keranjang').html('Keranjang ('+item.length+')')
+        }
+
+        $("#user-keranjang").click(function(){
+            window.location.href = "<?php echo site_url('app/keranjang'); ?>";
+        });
 
         if(window.localStorage.TOKEN){
             $('#registerd_user').show();
