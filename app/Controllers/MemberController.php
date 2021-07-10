@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 
 class MemberController extends BaseController
 {
+	var $member;
+	
 	public function __construct()
 	{
 		$this->member = new \App\Models\Member();
@@ -13,28 +15,66 @@ class MemberController extends BaseController
 
 	public function index()
 	{
+		$segment = $this->request->uri->getSegment(1);
+		if($segment=='api'){
+			return $this->getData();
+		}else{
+			$data['page'] = 'pages/member_view';
+			return view('main',$data);
+		}
+	}
+
+	public function getdata(){
 		$this->response->setHeader('Access-Control-Allow-Origin', '*')
             ->setHeader('Access-Control-Allow-Headers', '*')
             ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-		$pages = ($this->request->getGet('pages') !='' ) ? $this->request->getGet('pages') : 1;
-		$perpages = ($this->request->getGet('perpages') !='' ) ? $this->request->getGet('perpages') : 10;
+		$filter = $this->request->getGet('keyword');
+		$data = [];
+
+
+		$member 		= new \App\Models\Member();
+		$order 			= $this->request->getGet('order');
+		$column 		= $this->request->getGet('columns');
+		$column_order 	= $column[$order[0]['column']]['data'];
+		$keyword 		= $this->request->getGet('search');
+		$totalPerpage 	= $this->request->getGet('length');
+		$start 			= $this->request->getGet('start');
+		
+		$pages = 1;
+		if($start > 0){
+			$pages = floor($start / $totalPerpage) + 1;
+		}
+		
+		
+		$total_data = count($member->findAll());
+		if($keyword['value'] !=''){
+			$total_data = count($member->orderBy($column_order, $order[0]['dir'])
+				->like("nama_member","%".$keyword['value']."%")
+				->findAll());
+		}
+
+		$data = $member->orderBy($column_order, $order[0]['dir'])
+			->like("nama_member","%".$keyword['value']."%")
+			->paginate($totalPerpage, "group", $pages);
 
 		return $this->response->setJSON([
-			'data' => $this->member->paginate($perpages,'group1',$pages),
-			'pager' =>[
-				'total'=> count($this->member->findAll()),
-				'perpage'=> $perpages,
-				'pages' =>  $pages
-			]
+			"data"=> $data,
+			"draw"=> $this->request->getGet('draw'),
+			"recordsTotal"=> $total_data,
+			"recordsFiltered"=> $total_data
 		]);
 	}
 
 	public function edit($id){
-
+		
 	}
 
 	public function show($id){
-
+		$this->response->setHeader('Access-Control-Allow-Origin', '*')
+            ->setHeader('Access-Control-Allow-Headers', '*')
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+			
+		return $this->response->setJSON($this->member->find($id));
 	}
 
 	public function create(){
@@ -54,11 +94,22 @@ class MemberController extends BaseController
 	}
 
 	public function update($id){
+		$memberSelect = $this->member->find($id);
 
+		$input = $this->request->getRawInput();
+		$input['id'] = $id;
+
+		if ($this->member->save($input) === false)
+		{
+			return  $this->response->setStatusCode(422)
+				->setJSON([$this->member->errors()]);
+		}else
+			return $this->response->setJSON(["message"=>"data berhasil di perbaharui"]);
 	}
 
 	public function delete($id){
-
+		$this->member->delete($id);
+		return $this->response->setJSON(["message"=>"data berhasil di hapus"]);
 	}
 
 }

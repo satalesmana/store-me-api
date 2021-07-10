@@ -31,7 +31,6 @@ class ProdukController extends BaseController
 		$filter = $this->request->getGet('keyword');
 		$data = [];
 
-
 		$produk 		= new \App\Models\Produk();
 		$order 			= $this->request->getGet('order');
 		$column 		= $this->request->getGet('columns');

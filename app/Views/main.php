@@ -18,6 +18,7 @@
         <script src="<?php echo base_url('/lib/bootstrap-4'); ?>/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/templates/sbadmin'); ?>/js/scripts.js" type="text/javascript"></script>
         <script src="<?php echo base_url('/lib'); ?>/datatable/datatables.js" type="text/javascript"></script>
+        <script src="<?php echo base_url('/lib'); ?>/dist/dropzone.js" type="text/javascript"></script>
     </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -66,7 +67,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <?php echo anchor("/kategori","Kategori",["class"=>"nav-link"]); ?>
                                     <?php echo anchor("/produk","Produk",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/customer","Pelanggan",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/member","Pelanggan",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
 

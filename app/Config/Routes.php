@@ -48,6 +48,8 @@ $routes->group('/', ['filter'=>'web', 'namespace' => 'App\Controllers'], functio
     $routes->get('produk', 'ProdukController::index');
     $routes->get('profile', 'Profile::index');
     $routes->get('pesanan', 'PesananController::index');
+    $routes->get('member', 'MemberController::index');
+    $routes->get('upload', 'UploadController::index');
 });
 
 $routes->group('api', [ 'filter'=>'auth', 'namespace' => 'App\Controllers'], function($routes)
@@ -55,9 +57,11 @@ $routes->group('api', [ 'filter'=>'auth', 'namespace' => 'App\Controllers'], fun
     $routes->resource('kategori',['controller' =>'KategoriController', 'except' => 'new,edit']);
     $routes->resource('produk',['controller' =>'ProdukController', 'except' => 'new,edit']);
     $routes->resource('pesanan',['controller' =>'PesananController', 'except' => 'new,edit']);
-
     $routes->resource('member',['controller' =>'MemberController', 'except' => 'new,edit']);
+    $routes->resource('upload',['controller' =>'UploadController', 'except' => 'new,edit']);
 });
+
+
 
 $routes->group('cmb', ['namespace' => 'App\Controllers'], function($routes){
     $routes->get('kategori', 'DropdownController::categoriitem');
