@@ -8,8 +8,11 @@
     <link href="/lib/app/custom.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cab03a59e6.js" crossorigin="anonymous"></script>
     <title>Store Me</title>
+    <link href="<?php echo base_url('/lib'); ?>/datatable/datatables.css" rel="stylesheet"/>
     <script src="/lib/app/bootstrap.bundle.min.js"></script>
     <script src="/lib/app/jquery.min.js"></script>
+
+    <script src="<?php echo base_url('/lib'); ?>/datatable/datatables.js" type="text/javascript"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -30,6 +33,13 @@
     <!-- Profile Page -->
     <?= view('app/profile') ?>
     <!-- End Profile Page -->
+    <?php if($page=='keranjang') { ?>
+        <?=  view('app/keranjang'); ?> 
+    <?php } ?>
+
+    <?php if($page=='pengiriman') { ?>
+        <?=  view('app/pengiriman'); ?> 
+    <?php } ?>
     
     <script>
         $('#unregisterd_user').hide();
