@@ -40,6 +40,10 @@
     <?php if($page=='pengiriman') { ?>
         <?=  view('app/pengiriman'); ?> 
     <?php } ?>
+
+    <?php if($page =='pembayaran'){?>
+        <?= view('app/pembayaran'); ?>    
+    <?php } ?>
     
     <script>
         $('#unregisterd_user').hide();
