@@ -4,7 +4,12 @@
             Proses Pembayaran
         </div>
         <div class="card-body">
-
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Baju</li>
+            <li class="list-group-item">Tas</li>
+            <li class="list-group-item">Celana</li>
+        </ul>
+        <h4>Total : <span class="badge badge-info">1000</span></h4>
         </div>
         <div class="card-footer text-muted" style="text-align: right;">
             <button class="btn btn-danger" id="btn_back">Back</button>
