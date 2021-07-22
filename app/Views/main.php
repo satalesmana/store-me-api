@@ -65,9 +65,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <?php echo anchor("/kategori","Kategori",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/produk","Produk",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/member","Pelanggan",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/kategori","Kategori",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/produk","Produk",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/member","Pelanggan",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
 
@@ -79,9 +79,9 @@
                             </a>
                             <div class="collapse" id="collapseLayoutsTransaksi" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <?php echo anchor("/pesanan","Pesanan",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/pembayaran","Pembayaran",["class"=>"nav-link"]); ?>
-                                    <?php echo anchor("/pengiriman","Pengiriman",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/pesanan","Pesanan",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/pembayaran","Pembayaran",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/pengiriman","Pengiriman",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
                             <!-- End Menu Transaksi-->
@@ -94,7 +94,7 @@
                             </a>
                             <div class="collapse" id="collapseLayoutsConfig" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <?php echo anchor("/user","User Account",["class"=>"nav-link"]); ?>
+                                    <?php echo anchor("/admin/user","User Account",["class"=>"nav-link"]); ?>
                                 </nav>
                             </div>
                             <!-- End Menu Config-->

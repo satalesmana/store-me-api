@@ -35,6 +35,8 @@ $routes->setAutoRoute(false);
 
 
 // Ini routing untuk user.
+
+
 $routes->group('app',['namespace' => 'App\Controllers'], function($routes){
     $routes->get('produkdata', 'ProdukController::index');
     $routes->get('keranjangdata', 'KeranjangController::index');
@@ -46,7 +48,7 @@ $routes->group('app',['namespace' => 'App\Controllers'], function($routes){
 
 });
 
-$routes->group('/', ['filter'=>'web', 'namespace' => 'App\Controllers'], function($routes){
+$routes->group('admin', ['filter'=>'web', 'namespace' => 'App\Controllers'], function($routes){
     $routes->post('me', 'Auth::me');
     $routes->get('', 'Home::index');
     $routes->get('kategori', 'KategoriController::index');
@@ -80,6 +82,8 @@ $routes->group('auth', ['namespace' => 'App\Controllers'], function($routes)
     $routes->post('register', 'Auth::register');
     $routes->post('login', 'Auth::login');
 });
+
+$routes->get('/', 'App::serve');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
