@@ -41,20 +41,32 @@ class PegnirimanController extends BaseController
 
 	private function getProvince(){
 		
-		$province = [];
-		
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,$this->base_url."/province?key=".$this->key);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		//curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($this->requesData));
+		$curl = curl_init();
 
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $this->base_url."/province",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_SSL_VERIFYHOST, false,
+			CURLOPT_SSL_VERIFYPEER, false,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+				"key: ". $this->key
+			),
+		));
 
-		$response = curl_exec($ch);
-		$province = json_decode($response);
-		curl_close($ch);
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		curl_close($curl);
 
-		return $province->rajaongkir->results;
+		if ($err) {
+			return ['messages'=> $err];
+		} else {
+			return $province->rajaongkir->results;
+		}
 	}
 
 	private function getCity(){
@@ -68,10 +80,17 @@ class PegnirimanController extends BaseController
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
 
 		$response = curl_exec($ch);
+		$err = curl_error($ch);
 		$city = json_decode($response);
 		curl_close($ch);
 
-		return $city->rajaongkir->results;
+		if ($err) {
+			return ['messages'=> $err];
+		} else {
+			return $city->rajaongkir->results;
+		}
+
+		
 	}
 
 	private function getConst(){
@@ -97,13 +116,18 @@ class PegnirimanController extends BaseController
 			),
 		));
 
-			$response = curl_exec($curl);
-			$cost = json_decode($response);
-			$err = curl_error($curl);
+		$response = curl_exec($curl);
+		$err = curl_error($ch);
+		$cost = json_decode($response);
+		$err = curl_error($curl);
 
-			curl_close($curl);
+		curl_close($curl);
 
+		if ($err) {
+			return ['messages'=> $err];
+		} else {
 			return $cost->rajaongkir->results;
+		}
 	}
 
 
